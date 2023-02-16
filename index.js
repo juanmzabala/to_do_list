@@ -43,6 +43,7 @@ function nuevaTarea(){
     borrar.classList = `botonBorrar elemento${numeroDeTareas}`;
 
     tarea.textContent = $nuevaTarea.value;
+    localStorage.setItem(`elemento${numeroDeTareas}`,$nuevaTarea.value);
 
     tarea.addEventListener("click",tareaHecha);
     borrar.addEventListener("click",eliminarTarea);
@@ -86,4 +87,5 @@ function ordenarTareasTerminadas(){
         $tablaDeTareas.append(botonBorrar);
 
     })
-}
+};
+
