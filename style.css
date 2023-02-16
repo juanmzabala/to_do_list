@@ -1,0 +1,135 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin:0;
+}
+*::first-letter{
+    text-transform: capitalize;
+}
+
+:root{
+    --primario:#3fc63f;
+    --secundario: #d52d2d;
+    --terciario: rgb(7, 7, 219); 
+    --claro: #e1e0e0;
+    --oscuro:#2f2f2f;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
+    background-color: var(--claro);
+}
+
+.container{
+   margin:25px auto;
+   padding: 25px;
+   background-color: white;
+   width: 100%;
+   max-width: 350px;
+}
+
+.rounded{
+    border-radius: 5px;
+}
+
+.fecha{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fechaIzquierda{
+    display: flex;
+    align-items: center;
+}
+
+.fechaDerecha{
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+#numero{
+    font-size: 50px;
+    margin-right: 7px;
+}
+
+#numero,
+#mes,
+#dia{
+    font-weight: bold;
+}
+
+.form{
+    display: grid;
+    grid-template-columns: 2fr auto 1fr;
+    gap: 5px;
+    justify-content: space-around;
+}
+
+#nuevaTarea{
+    border:none;
+    background-color: var(--claro);
+    padding: 5px;
+    outline: none;
+}
+
+#agregarTarea{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    border:none;
+    background-color: var(--primario);
+    color: white;
+    cursor: pointer;
+}
+
+#ordenarTareas{
+    border:none;
+    background-color: var(--terciario);
+    cursor: pointer;
+    color: white;
+}
+#newTagBoard{
+    display: grid;
+    grid-template-columns: auto 30px;
+    gap:2px;
+}
+
+.tarea {
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    background-color: var(--primario);
+    border-radius: 5px;
+    margin-top: 10px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.botonBorrar{
+   border-radius: 5px;
+   height: 30px;
+   width: 30px;
+   border: none;
+   margin-top: 10px;
+   background-color: var(--secundario);
+   color:white;
+   cursor: pointer;
+}
+
+.hecha{
+    width: 100%;
+    height: 30px;
+    padding: 5px;
+    background-color: var(--claro);
+    border-radius: 5px;
+    margin-top: 10px;
+    color: var(--oscuro);
+    text-decoration:line-through;
+    cursor: pointer;
+}
+
