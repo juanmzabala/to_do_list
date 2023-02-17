@@ -43,7 +43,7 @@ function nuevaTarea(){
     borrar.classList = `botonBorrar elemento${numeroDeTareas}`;
 
     tarea.textContent = $nuevaTarea.value;
-    localStorage.setItem(`elemento${numeroDeTareas}`,$nuevaTarea.value);
+    localStorage.setItem($nuevaTarea.value,"tarea");
 
     tarea.addEventListener("click",tareaHecha);
     borrar.addEventListener("click",eliminarTarea);
@@ -56,12 +56,26 @@ function nuevaTarea(){
 }
 
 function tareaHecha(){
-    this.classList.toggle("hecha");
+    const tareaHecha = this.textContent;
+    console.log(tareaHecha);
+   if(this.classList.contains("tarea")){
+        this.classList.replace("tarea","hecha");
+        localStorage.setItem(tareaHecha,"hecha");
+
+    }else {
+        this.classList.replace("hecha","tarea");
+        this.classList.add("tarea");
+        localStorage.setItem(tareaHecha,"tarea");
+    };
+
 };
 
 
 function eliminarTarea(){
     const clase = "." + this.classList[1];
+    const textoABorrar = document.querySelector("div"+clase);
+    console.log(textoABorrar.textContent);
+    localStorage.removeItem(textoABorrar.textContent);
 
     const elementos =  document.querySelectorAll(clase);
 
@@ -88,4 +102,32 @@ function ordenarTareasTerminadas(){
 
     })
 };
+
+
+function cargarLocalStorage(){
+    const elementos = Object.keys(localStorage);
+    console.log(elementos);
+
+    elementos.forEach((elemento)=>{
+
+        const tarea = document.createElement("div");
+        tarea.classList = `${localStorage.getItem(elemento)} elemento${numeroDeTareas}`;
+    
+        const borrar = document.createElement("button");
+        borrar.textContent = "X";
+        borrar.classList = `botonBorrar elemento${numeroDeTareas}`;
+    
+        tarea.textContent = elemento;
+    
+        tarea.addEventListener("click",tareaHecha);
+        borrar.addEventListener("click",eliminarTarea);
+        $tablaDeTareas.prepend(borrar);
+        $tablaDeTareas.prepend(tarea);
+        
+        numeroDeTareas++;
+
+    });
+    ordenarTareasTerminadas()
+}
+cargarLocalStorage();
 
